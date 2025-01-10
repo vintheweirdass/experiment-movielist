@@ -2,8 +2,6 @@ import React from "react";
 import { FlatList, Image, Text, View } from "react-native";
 import { HomeScreenProps } from "./typeHelper";
 import { Movie, movieData } from "../assets/MovieData";
-import { AirbnbRating } from "react-native-ratings";
-import ReadMore from "../assets/ReadMore";
 import MovieTab from "../assets/MovieTab";
 import { ScrollView } from "react-native";
 const HomeScreen: React.FC<HomeScreenProps> = (props) => {
@@ -48,6 +46,7 @@ const HomeScreen: React.FC<HomeScreenProps> = (props) => {
                                 movie={item}
                                 maxStarsSize={findHighestRating.rating}
                                 vertical={true}
+                                mode="viewers"
                             />
                         ))}
                     </ScrollView>

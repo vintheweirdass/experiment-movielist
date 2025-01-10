@@ -3,7 +3,8 @@ import { Movie } from "./MovieData";
 import ReadMore from "./ReadMore";
 import { AirbnbRating } from "react-native-ratings";
 
-export const Mov:React.FC<{vertical?:boolean, movie:Movie, maxStarsSize?:number}> = ({movie, vertical=false, maxStarsSize=5})=>{
+export type Mode = "viewers"|"rating"
+export const Mov:React.FC<{vertical?:boolean, movie:Movie, maxStarsSize?:number, mode?:Mode}> = ({movie, vertical=false, maxStarsSize=5, mode="rating"})=>{
 return <View
     style={{
         margin: 8,
@@ -33,7 +34,7 @@ return <View
             {movie.description}
         </ReadMore>
         }
-        <AirbnbRating
+        {mode==="viewers"?<Text>{`${String(movie.viewers).replace(/\B(?=(\d{3})+(?!\d))/g, ".")} Viewers`}</Text>:<AirbnbRating
             selectedColor="red"
             reviewColor="black"
             reviews={[
@@ -47,7 +48,7 @@ return <View
             defaultRating={movie.rating}
             size={20}
             reviewSize={20}
-        />
+        />}
     </View>
 </View>;
 }
